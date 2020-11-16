@@ -1,0 +1,58 @@
+  
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>websocket-chat</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="ws.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2 id="ttl" class="text-muted">Bem vinde ao nosso Web Chat!</h2>
+            <h4 id="connected"><h4>
+        </div>
+
+        <div class="jumbotron" id="jumbotron">
+            <p class="lead">Por favor, escolha o seu usuário para a sessão:</p>
+            <h6>Não deve conter espaços e deve ser único</h6>
+            <div class="row">
+                <div class="col-lg-4">
+                    <form id="connect-form" class="input-group">
+                        <input type="text" class="form-control" id="name" placeholder="Quem é você?">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary" id="connect_btn">Conectar</button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="message_wrapper">
+            <div class="col-lg-12 message_box">
+                <div id="messages"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <form id="message-form" class="input-group">
+                        <input type="text" class="form-control" id="message" placeholder="Digite sua mensagem aqui">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-success" id="send_btn">Enviar</button>
+                        </span>
+                    </form>
+                    <h4>Para mandar uma mensagem privada, use: \user mensagem</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
