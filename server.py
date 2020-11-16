@@ -47,13 +47,17 @@ def client_handler(websocket, path):
                 mt = {'mt':'mess', 'data':'{}: {}'.format(name, message)}
                 yield from client.send(json.dumps(mt))
         else:
-            to = message[1:].split(' ')[0]
-            a = next((server for server, nome in clients.items() if nome == to), None)
-            mt = {'mt':'pm', 'data':'[Private] {}: {}'.format(name, ' '.join(message.split(' ')[1:]))}
-            yield from a.send(json.dumps(mt))
-            mt = {'mt':'pm', 'data':'[Private to {}] {}: {}'.format(to, name, ' '.join(message.split(' ')[1:]))}
-            yield from websocket.send(json.dumps(mt))
-           
+            try:
+                to = message[1:].split(' ')[0]
+                a = next((server for server, nome in clients.items() if nome == to), None)
+                mt = {'mt':'pm', 'data':'[Private] {}: {}'.format(name, ' '.join(message.split(' ')[1:]))}
+                yield from a.send(json.dumps(mt))
+                mt = {'mt':'pm', 'data':'[Private to {}] {}: {}'.format(to, name, ' '.join(message.split(' ')[1:]))}
+                yield from websocket.send(json.dumps(mt))
+            except:
+                mt = {'mt':'server', 'data':'Usuário não encontrado'}
+                yield from websocket.send(json.dumps(mt))
+
 
 start_server = websockets.serve(client_handler, *LISTEN_ADDRESS)
 

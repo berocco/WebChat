@@ -44,7 +44,7 @@ $(document).ready(function() {
             }
             else{
                 clients = recv.data.split(', ')
-                $('#connected').text(''.concat('Usuarios conectados: ', recv.data));
+                $('#connected').text(''.concat('Usuários conectados: ', recv.data));
             };    
         }
         else{
